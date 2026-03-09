@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">
+            Project board
+        </h1>
+        <p class="header-description">
+            Manage your task efficiently
+        </p>
+    </header>
+    <main class="board">
+        <section class="column" data-status="queue">
+            <div class="column-header">
+                <h2 class="column-title">In queue</h2>
+                <button class="column-button">+</button>
+            </div>
+            <div class="column-cards">
+                <article class="task-card">
+                    <div class="task-card-top">
+                        <h3 class="task-card-title">Task 1</h3>
+                        <span class="task-card-priority task-card-priority-low">low</span>
+                    </div>
+                    <div class="task-card-body">
+                        <p class="task-card-description">Do something</p>
+                    </div>
+                    <div class="task-card-bottom">
+                        <span class="task-card-meta">Mar 12</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="column" data-status="progress">
+            <div class="column-header">
+                <h2 class="column-title">In progress</h2>
+                <button class="column-button">+</button>
+            </div>
+            <div class="column-cards">
+                <article class="task-card">
+                    <div class="task-card-top">
+                        <h3 class="task-card-title">Task 1</h3>
+                        <span class="task-card-priority task-card-priority-medium">medium</span>
+                    </div>
+                    <div class="task-card-body">
+                        <p class="task-card-description">Do something</p>
+                    </div>
+                    <div class="task-card-bottom">
+                        <span class="task-card-meta">Mar 12</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="column" data-status="done">
+            <div class="column-header">
+                <h2 class="column-title">Done</h2>
+                <button class="column-button">+</button>
+            </div>
+            <div class="column-cards">
+                <article class="task-card">
+                    <div class="task-card-top">
+                        <h3 class="task-card-title">Task 1</h3>
+                        <span class="task-card-priority task-card-priority-high">high</span>
+                    </div>
+                    <div class="task-card-body">
+                        <p class="task-card-description">Do something</p>
+                    </div>
+                    <div class="task-card-bottom">
+                        <span class="task-card-meta">Mar 12</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
