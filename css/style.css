@@ -221,8 +221,16 @@ button {
 .task-card-bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+}
+
+
+.task-card-bottom .edit-button {
+    margin-left: auto;
+}
+
+
+.task-card-bottom .delete-button {
+    margin-left: 8px;
 }
 
 .task-card-meta {
@@ -320,7 +328,8 @@ button {
     background-color: #e3dbd1;
 }
 
-.delete-button{
+.delete-button,
+.edit-button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -334,6 +343,11 @@ button {
 
 .delete-button:hover{
     background-color: red;
+}
+
+
+.edit-button:hover{
+    background-color: lightgray;
 }
 
 
