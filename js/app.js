@@ -1,4 +1,4 @@
-import { loadTasksFromStorage, saveTasksToStorage } from "./utils/storage.js";
+import { loadTasksFromStorage } from "./utils/storage.js";
 import { renderBoard } from "./render/board.js";
 import { initTaskFormHandlers } from "./handlers/taskFormHandlers.js";
 import { initTaskActions } from "./handlers/taskActions.js";
