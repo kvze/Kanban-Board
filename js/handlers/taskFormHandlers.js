@@ -60,7 +60,8 @@ export function initTaskFormHandlers(state) {
                 taskData.description,
                 taskData.date,
                 taskData.priority,
-                status
+                status,
+                state.tasks.length
             )
 
             state.tasks = updateTask(state.tasks, updatedTask);
@@ -72,7 +73,8 @@ export function initTaskFormHandlers(state) {
                 taskData.description,
                 taskData.date,
                 taskData.priority,
-                status
+                status,
+                state.tasks.length
             );
     
             state.tasks.push(newTask);

@@ -10,7 +10,7 @@ export function renderColumn(status, tasks) {
 
     cardsContainer.innerHTML = "";
 
-    const filteredTasks = filterTasksByStatus(tasks, status);
+    const filteredTasks = filterTasksByStatus(tasks, status).sort((a, b) => a.order - b.order);
 
     filteredTasks.forEach(task => {
         const cardElement = createTaskCard(task);

@@ -50,20 +50,30 @@ export function initDragDrop(state){
     document.addEventListener("drop", event =>{
 
         const column = event.target.closest(".column");
-
+        
         if (!column) return;
-
+        
         const newStatus = column.dataset.status;
 
-        const task = getTaskById(state.tasks, state.draggedTaskId);
+        const container = column.querySelector(".column-cards");
 
-        if (!task) return;
+        if (!container) return;
+        
+        const cardsInColumn = container.querySelectorAll(".task-card");
 
-        task.status = newStatus;
+        cardsInColumn.forEach((cardElement, index) => {
+            const taskId = Number(cardElement.dataset.id);
+            const task = getTaskById(state.tasks, taskId);
 
+            if (!task) return;
+
+            task.status = newStatus;
+            task.order = index;
+        });
+        
         saveTasksToStorage(state.tasks);
-        //renderBoard(state.tasks);
-
+        renderBoard(state.tasks);
+        
         state.draggedTaskId = null;
     });
 };

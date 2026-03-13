@@ -1,4 +1,3 @@
-import { defaultTasks } from "./data/tasks.js";
 import { loadTasksFromStorage, saveTasksToStorage } from "./utils/storage.js";
 import { renderBoard } from "./render/board.js";
 import { initTaskFormHandlers } from "./handlers/taskFormHandlers.js";
@@ -10,11 +9,6 @@ const state = {
     editingTaskId: null,
     draggedTaskId: null
 };
-
-if (!state.tasks.length) {
-    state.tasks = defaultTasks;
-    saveTasksToStorage(state.tasks);
-}
 
 renderBoard(state.tasks);
 initTaskFormHandlers(state);
