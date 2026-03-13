@@ -1,4 +1,4 @@
-import { createTask } from "../data/tasks.js";
+import { createTask, updateTask } from "../data/tasks.js";
 import { saveTasksToStorage } from "../utils/storage.js";
 import { createTaskFormHTML, getTaskDataFromForm } from "../ui/taskForm.js";
 import { renderBoard } from "../render/board.js";
@@ -8,12 +8,20 @@ export function initTaskFormHandlers(state) {
 
     columnButtons.forEach(button => {
         button.addEventListener("click", () => {
+
             const column = button.closest(".column");
             const formWrapper = column.querySelector(".task-form-wrapper");
 
             if (!formWrapper.innerHTML.trim()) {
                 formWrapper.innerHTML = createTaskFormHTML();
             }
+
+            const form = formWrapper.querySelector(".task-form");
+
+            form.reset(); 
+            form.querySelector(".task-form-submit").textContent = "Add";
+
+            state.editingTaskId = null;
 
             formWrapper.classList.remove("hidden");
         });
@@ -22,7 +30,12 @@ export function initTaskFormHandlers(state) {
     document.addEventListener("click", event => {
         if (event.target.classList.contains("task-form-cancel")) {
             const formWrapper = event.target.closest(".task-form-wrapper");
+            const form = formWrapper.querySelector(".task-form");
+
+            form.reset();
+
             formWrapper.classList.add("hidden");
+            state.editingTaskId = null;
         }
     });
 
@@ -39,16 +52,32 @@ export function initTaskFormHandlers(state) {
 
         const taskData = getTaskDataFromForm(form);
 
-        const newTask = createTask(
-            Date.now(),
-            taskData.title,
-            taskData.description,
-            taskData.date,
-            taskData.priority,
-            status
-        );
+        if (state.editingTaskId){
 
-        state.tasks.push(newTask);
+            const updatedTask = createTask(
+                state.editingTaskId,
+                taskData.title,
+                taskData.description,
+                taskData.date,
+                taskData.priority,
+                status
+            )
+
+            state.tasks = updateTask(state.tasks, updatedTask);
+            state.editingTaskId = null;
+        } else {
+            const newTask = createTask(
+                Date.now(),
+                taskData.title,
+                taskData.description,
+                taskData.date,
+                taskData.priority,
+                status
+            );
+    
+            state.tasks.push(newTask);
+        }
+
         saveTasksToStorage(state.tasks);
         renderBoard(state.tasks);
 

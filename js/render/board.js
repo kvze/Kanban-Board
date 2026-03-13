@@ -6,6 +6,7 @@ const STATUSES = ["queue", "progress", "done"];
 export function renderColumn(status, tasks) {
     const column = document.querySelector(`.column[data-status="${status}"]`);
     const cardsContainer = column.querySelector(".column-cards");
+    const countElements = column.querySelector(".column-count");
 
     cardsContainer.innerHTML = "";
 
@@ -15,6 +16,8 @@ export function renderColumn(status, tasks) {
         const cardElement = createTaskCard(task);
         cardsContainer.append(cardElement);
     });
+
+    countElements.textContent = filteredTasks.length;
 };
 
 export function renderBoard(tasks) {

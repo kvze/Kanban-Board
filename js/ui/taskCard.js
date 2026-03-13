@@ -2,6 +2,7 @@ export function createTaskCard(task) {
     const card = document.createElement("article");
     card.classList.add("task-card");
     card.dataset.id = task.id;
+    card.draggable = true;
 
     card.innerHTML = `
         <div class="task-card-top">
